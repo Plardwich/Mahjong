@@ -44,4 +44,8 @@ public class Tile {
     public void makeDora() {
         this.isDora = true;
     }
+
+    public Tile copy() {
+        return new Tile(this.suit, this.num, this.isDora, this.isConcealed);
+    }
 }

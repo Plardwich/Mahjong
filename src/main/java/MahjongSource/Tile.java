@@ -1,4 +1,4 @@
-package Mahjong;
+package MahjongSource;
 
 public class Tile {
     private boolean isDora;
@@ -47,5 +47,9 @@ public class Tile {
 
     public Tile copy() {
         return new Tile(this.suit, this.num, this.isDora, this.isConcealed);
+    }
+
+    public boolean isEqualToString(String suit, String num) {
+        return this.suit.equals(suit) && this.num == Integer.parseInt(num);
     }
 }

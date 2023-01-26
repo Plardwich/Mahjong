@@ -1,20 +1,38 @@
-package Mahjong;
+package MahjongSource;
+
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+@Getter
 public class Player {
     private List<Tile> hand;
+
+    private List<Tile> discard;
     private List<HandCombination> handCombinations;
 
     public Player(List<Tile> hand) {
         this.hand = hand;
         this.handCombinations = new ArrayList<HandCombination>();
+        this.discard = new ArrayList<>();
     }
 
-    public List<HandCombination> getHandCombinations() {
-        return handCombinations;
+    public Player() {
+        this(new ArrayList<Tile>());
+    }
+
+    public void discardTile(Tile tile) {
+        if (!this.hand.contains(tile)) {
+            throw new IllegalArgumentException();
+        }
+        this.discard.add(tile);
+        this.hand.remove(tile);
+    }
+
+    public void draw(Tile tile) {
+        hand.add(tile);
     }
 
     public void findHandCombinations() {

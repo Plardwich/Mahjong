@@ -1,4 +1,4 @@
-package Mahjong;
+package MahjongSource;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,15 +10,39 @@ public class Board {
     private List<Tile> allTiles;
     private Queue<Tile> wall;
 
-    private Player playerEast;
-    private Player playerNorth;
-    private Player playerSouth;
-    private Player playerWest;
+    //Will implement this deadwall stuff later
+    //private Queue<Tile> deadWall;
+
+    private Player[] seatPositions;
+
+    private static Rules rules = new Rules();
 
     public Board() {
+        this.allTiles = new ArrayList<>();
         addAllTiles();
         Collections.shuffle(this.allTiles);
         this.wall = new LinkedList<>(this.allTiles);
+        placePlayers();
+        /*
+        *****Will implement this dead wall stuff later*****
+        for (int i = 0; i < 14; i++) {
+            this.deadWall.add(this.wall.poll());
+        }
+         */
+    }
+
+    public int getPlayerSeatIndex(Player player) {
+        int position = -1;
+        for (int i = 0; i < this.seatPositions.length; i++) {
+            if (seatPositions[i] == player) {
+                position = i;
+            }
+        }
+        return position;
+    }
+
+    public String getPlayerSeat(Player player) {
+        return rules.seatPositionOrder[getPlayerSeatIndex(player)];
     }
 
     private void addAllTiles() {
@@ -57,5 +81,12 @@ public class Board {
         addFourTiles(new Tile("Haku", 0));
         addFourTiles(new Tile("Hatsu", 0));
         addFourTiles(new Tile("Chun", 0));
+    }
+
+    private void placePlayers() {
+        this.seatPositions = new Player[4];
+        for (int i = 0; i < this.seatPositions.length; i++) {
+            this.seatPositions[i] = new Player();
+        }
     }
 }

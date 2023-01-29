@@ -1,6 +1,6 @@
 package MahjongSource;
 
 public class Rules {
-    public static String[] seatPositionOrder = {"east", "south", "west", "north"};
-    public static int startingHandSize = 13;
+    public static String[] SEAT_POSITION_ORDER = {"east", "south", "west", "north"};
+    public static int STARTING_HAND_SIZE = 13;
 }

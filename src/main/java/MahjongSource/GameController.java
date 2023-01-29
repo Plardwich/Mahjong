@@ -30,7 +30,7 @@ public class GameController {
     public void startingDeal() {
         Player[] players = mahjongBoard.getSeatPositions();
         for (int i = 0; i < players.length; i++) {
-            for (int j = 0; j < Rules.startingHandSize; j++) {
+            for (int j = 0; j < Rules.STARTING_HAND_SIZE; j++) {
                 deal();
             }
             nextTurn();

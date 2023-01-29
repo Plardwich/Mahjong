@@ -42,7 +42,7 @@ public class Board {
     }
 
     public String getPlayerSeat(Player player) {
-        return rules.seatPositionOrder[getPlayerSeatIndex(player)];
+        return rules.SEAT_POSITION_ORDER[getPlayerSeatIndex(player)];
     }
 
     private void addAllTiles() {
